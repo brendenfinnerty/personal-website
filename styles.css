@@ -1,0 +1,215 @@
+/* Define the custom font using @font-face */
+@font-face {
+    font-family: 'Atelier'; /* Name of the font */
+    src: url('/Users/brendenfinnerty/Desktop/Personal Website/assets/Atelier.otf') format('opentype'); /* Path to the OTF font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-image: url('assets/abstract-background-vintage-color-line-curve-au-2023-11-27-05-31-12-utc.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    padding: 0; /* Prevent content from touching the edges */
+    font-family: Arial, sans-serif; /* Fallback font */
+}
+
+/* Header section without background color */
+.site-header {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    text-align: center;
+    background-color: transparent; /* Make the header transparent to show the background image */
+}
+
+/* Style for the h2 in the header */
+.site-header h2 {
+    font-family: 'Atelier', sans-serif; /* Use the custom font */
+    color: white; /* Set the font color to white */
+    font-size: 1.8em;
+    margin: 0;
+    margin-top: 15px;
+    font-weight: lighter;
+    text-decoration: none; /* Remove underline */
+}
+
+/* Ensure h2 a link doesn't change color or get underlined */
+.site-header h2 a {
+    color: white; /* Ensure link stays white */
+    text-decoration: none; /* Ensure no underline */
+    transition: color 0.3s ease; /* Add smooth transition for hover effect */
+}
+
+/* Hover effect for the h2 link */
+.site-header h2 a:hover {
+    color: lightgreen !important; /* Change color on hover */
+    text-decoration: none; /* No underline on hover */
+}
+
+/* Prevent visited link from turning purple */
+.site-header h2 a:visited {
+    color: white; /* Ensure the visited link remains white */
+    text-decoration: none; /* No underline after clicking */
+}
+
+/* Navigation bar styling */
+.nav-bar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; /* Align navigation items to the right */
+    margin-top: 20px;
+}
+
+/* Styling for individual list items */
+.nav-bar li {
+    margin-right: 40px; /* Add space between items */
+}
+
+.nav-bar li:last-child {
+    margin-right: 0; /* Remove margin on the last item */
+}
+
+/* Navigation links styling */
+.nav-bar a {
+    text-decoration: none;
+    color: white; /* Set the navigation link color to white */
+    font-family: 'Atelier', sans-serif; /* Apply the custom font to the links */
+    padding: 10px 20px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    border-radius: 5px; /* Add rounded corners to both default and hover states */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+    text-decoration: none;
+}
+
+/* Style for visited links */
+.nav-bar a:visited {
+    color: white; /* Keep the same color after the link is visited */
+}
+
+
+.nav-bar a:hover {
+    background-color: pink; /* Background color on hover */
+    color: white; /* Text color on hover */
+    border-radius: 5px; /* Add rounded corners on hover */
+}
+
+/* Center content */
+.content {
+    text-align: center;
+    color: white; /* Set content text color to white */
+    padding-top: 100px; /* Add space at the top */
+    font-size: 2em;
+}
+
+/* Container to center the shape on the page */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Full viewport height */
+    position: relative; /* Set relative position to handle the pseudo-element */
+}
+
+/* Custom diagonal oval (ellipse) shape for the picture */
+.profile-picture {
+    margin-bottom: 50px;
+    width: 300px; /* Width of the oval */
+    height: 400px; /* Height of the oval */
+    position: relative; /* Set to relative for positioning inside */
+    border-radius: 50% 50% 50% 50%; /* Creates a perfectly rounded oval */
+    transform: rotate(30deg); /* Rotate the oval container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for some depth */
+    overflow: hidden; /* Ensure the image stays within the container */
+    z-index: 1; /* Ensure it is above the pseudo-element */
+    /* Gradient background for the first (main) oval */
+    background-image: linear-gradient(135deg, navy, lightgrey);
+    /* You can use radial-gradient if you prefer a circular gradient */
+}
+
+/* Image inside the oval, keeping it straight */
+.profile-picture img {
+    position: absolute;
+    top: 0;
+    left: 10%; /* Shift the image slightly to the right */
+    width: 110%; /* Make the image slightly wider to cover the shifted area */
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the oval without distortion */
+    transform: rotate(-30deg); /* Rotate the image back to keep it straight */
+}
+
+/* Second oval behind the first one using a pseudo-element */
+.profile-container::before {
+    content: ''; /* Pseudo-element doesn't require content */
+    position: absolute;
+    top: calc(50% - 250px); /* Centered position - Adjust according to oval height */
+    left: calc(50% - 250px); /* Centered position - Adjust according to oval width */
+    width: 350px; /* Larger than the original oval */
+    height: 450px; /* Larger than the original oval */
+    /* Gradient background for the second oval */
+    background-image: linear-gradient(135deg, darkgrey, purple); /* Gradient for second oval */
+    border-radius: 50%; /* Creates the oval shape */
+    transform: rotate(-30deg); /* Keep the same rotation as the main oval */
+    z-index: 0; /* Ensure it appears behind the main oval */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for some depth */
+}
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Normal position at the bottom */
+    bottom: 0;
+    width: 100%;
+}
+
+/* Social links styling */
+.social-links {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start; /* Center the icons */
+    gap: 20px; /* Space between the icons */
+}
+
+/* Style the individual list items */
+.social-links li {
+    display: inline-block;
+}
+
+/* Style the SVG icons */
+.social-links li svg {
+    width: 32px;
+    height: 32px;
+    fill: white; /* Set default color for the icons */
+    transition: fill 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover effect */
+.social-links li svg:hover {
+    fill: lightgreen; /* Change the color of the icon on hover */
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column; /* Stack the navigation links vertically on smaller screens */
+        align-items: center; /* Center the stacked items */
+    }
+
+    .nav-bar li {
+        margin-bottom: 20px; /* Add space between vertically stacked items */
+    }
+
+    .content {
+        font-size: 1.5em; /* Adjust content font size for smaller screens */
+    }
+}
